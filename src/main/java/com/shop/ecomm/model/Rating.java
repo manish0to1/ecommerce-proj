@@ -33,4 +33,8 @@ public class Rating {
 
 	private LocalDateTime creatAt;
 
+	public Rating() {
+		// TODO Auto-generated constructor stub
+	}
+
 }
