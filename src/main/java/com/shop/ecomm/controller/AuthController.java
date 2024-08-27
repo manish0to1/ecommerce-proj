@@ -39,43 +39,45 @@ public class AuthController {
 		this.jwtProvider = jwtProvider;
 	}
 
-//	// sign up method
-//	@PostMapping("/sign up")
-//	public ResponseEntity<AuthResponse> createUserHandler(@RequestBody User user) throws UserException {
-//
-//		String email = user.getEmail();
-//		String password = user.getPassword();
-//		String firstName = user.getFirstName();
-//		String lastName = user.getLastName();
-//
-//		User isEmailExist = userRepository.findByEmail(email);
-//
-//		// check for if email already exist then
-//		if (isEmailExist != null) {
-//			throw new UserException("Email is already used with another account !");
-//		}
-//
-//		// other wise create new user with required information
-//		User createdUser = new User();
-//		createdUser.setEmail(email);
-//		createdUser.setPassword(passwordEncoder.encode(password));
-//		createdUser.setFirstName(firstName);
-//		createdUser.setLastName(lastName);
-//
-//		User savedUser = userRepository.save(createdUser); // user saved
-//
-//		Authentication authentication = new UsernamePasswordAuthenticationToken(savedUser.getEmail(),
-//				savedUser.getPassword());
-//		SecurityContextHolder.getContext().setAuthentication(authentication);
-//
-//		String token = jwtProvider.generatToken(authentication);
-//
-//		AuthResponse authResponse = new AuthResponse();
-//		((AuthResponse) authentication).setJwt(token);
-//		((AuthResponse) authentication).setMessage("Signup Successfully.");
-//
-//		return new ResponseEntity<AuthResponse>(authResponse, HttpStatus.CREATED);
-//	}
+	// // sign up method
+	// @PostMapping("/sign up")
+	// public ResponseEntity<AuthResponse> createUserHandler(@RequestBody User user)
+	// throws UserException {
+	//
+	// String email = user.getEmail();
+	// String password = user.getPassword();
+	// String firstName = user.getFirstName();
+	// String lastName = user.getLastName();
+	//
+	// User isEmailExist = userRepository.findByEmail(email);
+	//
+	// // check for if email already exist then
+	// if (isEmailExist != null) {
+	// throw new UserException("Email is already used with another account !");
+	// }
+	//
+	// // other wise create new user with required information
+	// User createdUser = new User();
+	// createdUser.setEmail(email);
+	// createdUser.setPassword(passwordEncoder.encode(password));
+	// createdUser.setFirstName(firstName);
+	// createdUser.setLastName(lastName);
+	//
+	// User savedUser = userRepository.save(createdUser); // user saved
+	//
+	// Authentication authentication = new
+	// UsernamePasswordAuthenticationToken(savedUser.getEmail(),
+	// savedUser.getPassword());
+	// SecurityContextHolder.getContext().setAuthentication(authentication);
+	//
+	// String token = jwtProvider.generatToken(authentication);
+	//
+	// AuthResponse authResponse = new AuthResponse();
+	// ((AuthResponse) authentication).setJwt(token);
+	// ((AuthResponse) authentication).setMessage("Signup Successfully.");
+	//
+	// return new ResponseEntity<AuthResponse>(authResponse, HttpStatus.CREATED);
+	// }
 
 	@PostMapping("/signup")
 	public ResponseEntity<AuthResponse> createUserHandler(@RequestBody User user) throws UserException {
