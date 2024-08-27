@@ -39,7 +39,7 @@ public class AuthController {
 		this.jwtProvider = jwtProvider;
 	}
 
-	// ########################################## Original
+	// ################### Original ##################### //
 	// // sign up method
 	// @PostMapping("/sign up")
 	// public ResponseEntity<AuthResponse> createUserHandler(@RequestBody User user)
@@ -80,7 +80,7 @@ public class AuthController {
 	// return new ResponseEntity<AuthResponse>(authResponse, HttpStatus.CREATED);
 	// }
 
-	// #################################### Debug this
+	// #################### Debug this ################ //
 	@PostMapping("/signup")
 	public ResponseEntity<AuthResponse> createUserHandler(@RequestBody User user) throws UserException {
 
