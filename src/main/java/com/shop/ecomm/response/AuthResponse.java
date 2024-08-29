@@ -14,6 +14,7 @@ public class AuthResponse {
 		// default constructor stub
 	}
 
+	// Getters & Setters
 	public String getJwt() {
 		return jwt;
 	}
