@@ -1,5 +1,6 @@
 package com.shop.ecomm.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -66,7 +67,24 @@ public class ProductServiceImpl implements ProductService {
 
 			thirdLevel = categoryRepository.save(thirdLevelCategory);
 		}
-		return null;
+
+		Product product = new Product();
+		product.setTitle(req.getTitle());
+		product.setColor(req.getColor());
+		product.setDescription(req.getDescription());
+		product.setDiscountedPrice(req.getDiscountedPrice());
+		product.setDiscountPersent(req.getDiscountPersent());
+		product.setImageUrl(req.getImgagUrl());
+		product.setBrand(req.getBrand());
+		product.setPrice(req.getPrice());
+		product.setSizes(req.getSize());
+		product.setQuantity(req.getQuantity());
+		product.setCategory(thirdLevel);
+		product.setCreatedAt(LocalDateTime.now());
+
+		Product savedProduct = productRepository.save(product);
+
+		return savedProduct;
 	}
 
 	@Override
