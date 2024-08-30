@@ -77,7 +77,7 @@ public class ProductServiceImpl implements ProductService {
 		product.setImageUrl(req.getImgagUrl());
 		product.setBrand(req.getBrand());
 		product.setPrice(req.getPrice());
-		product.setSizes(req.getSize());
+		product.setSize(req.getSize());
 		product.setQuantity(req.getQuantity());
 		product.setCategory(thirdLevel);
 		product.setCreatedAt(LocalDateTime.now());
@@ -88,15 +88,24 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product deleteProduct(Long productId) throws ProductException {
-		// TODO Auto-generated method stub
-		return null;
+	public String deleteProduct(Long productId) throws ProductException {
+
+		Product product = findProductById(productId);
+		product.getSize().clear();
+		productRepository.delete(product);
+
+		return "Product Deleted Successfully !";
 	}
 
 	@Override
-	public Product updateproduct(Long productId, Product product) throws ProductException {
-		// TODO Auto-generated method stub
-		return null;
+	public Product updateproduct(Long productId, Product req) throws ProductException {
+
+		Product product = findProductById(productId);
+		if (req.getQuantity() != 0) {
+			product.setQuantity(req.getQuantity());
+		}
+
+		return productRepository.save(product);
 	}
 
 	@Override
