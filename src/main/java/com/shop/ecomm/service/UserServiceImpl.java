@@ -13,11 +13,11 @@ import com.shop.ecomm.model.User;
 import com.shop.ecomm.repository.UserRepository;
 
 @Service
-public class CustomUserServiceImpl implements UserDetailsService {
+public class UserServiceImpl implements UserDetailsService {
 
 	private UserRepository userRepository;
 
-	public CustomUserServiceImpl(UserRepository userRepository) {
+	public UserServiceImpl(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
 
