@@ -3,6 +3,7 @@ package com.shop.ecomm.service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -133,6 +134,13 @@ public class ProductServiceImpl implements ProductService {
 			Integer minPrice, Integer maxPrice, Integer minDiscount, String sort, String stock, Integer pageNumber,
 			Integer pageSize) {
 		Pageable pageable = PageRequest.of(pageNumber, pageSize);
+		List<Product> products = productRepository.filterProducts(category, minPrice, maxPrice, minDiscount, sort);
+
+		// COlors Filteration Logic
+		if (!colors.isEmpty()) {
+			products = products.stream().filter(p -> colors.stream().anyMatch(c -> c.equalsIgnoreCase(p.getColor())))
+					.collect(Collectors.toList());
+		}
 		return null;
 	}
 
