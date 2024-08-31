@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -133,6 +134,7 @@ public class ProductServiceImpl implements ProductService {
 	public Page<Product> getAllProductByCategory(String category, List<String> sizes, List<String> colors,
 			Integer minPrice, Integer maxPrice, Integer minDiscount, String sort, String stock, Integer pageNumber,
 			Integer pageSize) {
+
 		Pageable pageable = PageRequest.of(pageNumber, pageSize);
 		List<Product> products = productRepository.filterProducts(category, minPrice, maxPrice, minDiscount, sort);
 
@@ -152,8 +154,13 @@ public class ProductServiceImpl implements ProductService {
 		}
 
 		// pagination
-		
-		return null;
+		int startIdx = (int) pageable.getOffset();
+		int endIdx = Math.min(startIdx + pageable.getPageSize(), products.size());
+
+		List<Product> pageContent = products.subList(startIdx, endIdx);
+
+		Page<Product> filteredProducts = new PageImpl<>(pageContent, pageable, products.size());
+		return filteredProducts;
 	}
 
 }

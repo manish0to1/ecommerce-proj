@@ -19,7 +19,7 @@ import com.shop.ecomm.model.User;
 import com.shop.ecomm.repository.UserRepository;
 import com.shop.ecomm.request.LoginRequest;
 import com.shop.ecomm.response.AuthResponse;
-import com.shop.ecomm.service.UserServiceImpl;
+import com.shop.ecomm.service.CustomUserServiceImpl;
 
 @RestController
 @RequestMapping("/auth")
@@ -29,9 +29,9 @@ public class AuthController {
 	private UserRepository userRepository;
 	private JwtProvider jwtProvider;
 	private PasswordEncoder passwordEncoder;
-	private UserServiceImpl customUserService;
+	private CustomUserServiceImpl customUserService;
 
-	public AuthController(UserRepository userRepository, UserServiceImpl customUserService,
+	public AuthController(UserRepository userRepository, CustomUserServiceImpl customUserService,
 			PasswordEncoder passwordEncoder, JwtProvider jwtProvider) {
 		this.userRepository = userRepository;
 		this.customUserService = customUserService;
