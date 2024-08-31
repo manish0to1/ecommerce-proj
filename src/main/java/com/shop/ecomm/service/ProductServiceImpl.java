@@ -146,10 +146,13 @@ public class ProductServiceImpl implements ProductService {
 		if (stock != null) {
 			if (stock.equals("in_stock")) {
 				products = products.stream().filter(p -> p.getQuantity() > 0).collect(Collectors.toList());
-			} else {
+			} else if (stock.equals("out_stock")) {
 				products = products.stream().filter(p -> p.getQuantity() < 1).collect(Collectors.toList());
 			}
 		}
+
+		// pagination
+		
 		return null;
 	}
 
