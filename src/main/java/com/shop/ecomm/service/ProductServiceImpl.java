@@ -2,6 +2,7 @@ package com.shop.ecomm.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -110,8 +111,13 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product findProductById(Long Id) throws ProductException {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Product> opt = productRepository.findById(Id);
+
+		if (opt.isPresent()) {
+			return opt.get();
+
+		}
+		throw new ProductException("Product not found with Id: " + Id);
 	}
 
 	@Override
