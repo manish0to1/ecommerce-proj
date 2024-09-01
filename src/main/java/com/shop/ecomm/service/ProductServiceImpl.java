@@ -16,20 +16,19 @@ import com.shop.ecomm.model.Category;
 import com.shop.ecomm.model.Product;
 import com.shop.ecomm.repository.CategoryRepository;
 import com.shop.ecomm.repository.ProductRepository;
-import com.shop.ecomm.repository.UserRepository;
 import com.shop.ecomm.request.CreateProductRequest;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
 	private ProductRepository productRepository;
-	private UserRepository userRepository;
+	private UserService userService;
 	private CategoryRepository categoryRepository;
 
-	public ProductServiceImpl(ProductRepository productRepository, UserRepository userRepository,
+	public ProductServiceImpl(ProductRepository productRepository, UserService userService,
 			CategoryRepository categoryRepository) {
 		this.productRepository = productRepository;
-		this.userRepository = userRepository;
+		this.userService = userService;
 		this.categoryRepository = categoryRepository;
 	}
 
