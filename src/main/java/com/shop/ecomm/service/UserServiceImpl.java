@@ -1,5 +1,7 @@
 package com.shop.ecomm.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.shop.ecomm.config.JwtProvider;
@@ -21,13 +23,17 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User findUserById(Long userId) throws UserException {
-		// TODO Auto-generated method stub
-		return null;
+
+		Optional<User> user = userRepository.findById(userId);
+		if (user.isPresent()) {
+			return user.get();
+		}
+		throw new UserException("User not found with id : " + userId);
 	}
 
 	@Override
 	public User findUserProfileByJwt(String jwt) throws UserException {
-		// TODO Auto-generated method stub
+		String email = 
 		return null;
 	}
 
