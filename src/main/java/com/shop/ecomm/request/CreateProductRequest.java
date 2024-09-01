@@ -16,7 +16,8 @@ public class CreateProductRequest {
 	private String brand;
 	private String color;
 
-	private Set<Size> size = new HashSet<>(); // size type changed from Set to String
+	private Set<Size> size = new HashSet<>(); // size type changed from Set to String !
+
 	private String imgagUrl;
 	private String topLevelCategory;
 	private String secondLevelCategory;
