@@ -43,7 +43,6 @@ public class Product {
 	@ElementCollection
 	@Column(name = "size")
 	private Set<Size> size = new HashSet<>();
-
 	@Column(name = "image_url")
 	private String imageUrl;
 
@@ -68,8 +67,8 @@ public class Product {
 
 	// Full constructor
 	public Product(Long id, String title, String description, int price, int discountedPrice, int discountPersent,
-			int quantity, String brand, String color, Set<Size> size, String imageUrl,
-			List<Rating> ratings, List<Review> reviews, int numRating, Category category, LocalDateTime createdAt) {
+			int quantity, String brand, String color, Set<Size> size, String imageUrl, List<Rating> ratings,
+			List<Review> reviews, int numRating, Category category, LocalDateTime createdAt) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
@@ -162,7 +161,7 @@ public class Product {
 	}
 
 	public Set<Size> getSize() {
-		return size;
+		return size; // type changed from Set to String
 	}
 
 	public void setSize(Set<Size> size) {
@@ -216,6 +215,7 @@ public class Product {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
+
 }
 
 // ########################## Original ############################# //

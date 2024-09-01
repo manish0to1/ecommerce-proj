@@ -3,7 +3,7 @@ package com.shop.ecomm.request;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.validation.constraints.Size;
+import com.shop.ecomm.model.Size;
 
 public class CreateProductRequest {
 
@@ -16,7 +16,7 @@ public class CreateProductRequest {
 	private String brand;
 	private String color;
 
-	private Set<Size> size = new HashSet<>();
+	private Set<Size> size = new HashSet<>(); // size type changed from Set to String
 	private String imgagUrl;
 	private String topLevelCategory;
 	private String secondLevelCategory;
@@ -89,11 +89,11 @@ public class CreateProductRequest {
 	}
 
 	public Set<Size> getSize() {
-		return size;
+		return size; // type changed from Set to String
 	}
 
 	public void setSize(Set<Size> size) {
-		this.size = size;
+		this.size = size; // type changed from Set to String
 	}
 
 	public String getImgagUrl() {

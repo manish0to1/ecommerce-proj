@@ -73,6 +73,7 @@ public class ProductServiceImpl implements ProductService {
 		}
 
 		Product product = new Product();
+
 		product.setTitle(req.getTitle());
 		product.setColor(req.getColor());
 		product.setDescription(req.getDescription());
@@ -81,7 +82,9 @@ public class ProductServiceImpl implements ProductService {
 		product.setImageUrl(req.getImgagUrl());
 		product.setBrand(req.getBrand());
 		product.setPrice(req.getPrice());
-		product.setSize(req.getSize());
+
+		product.setSize(req.getSize()); // type changed from Set to String
+
 		product.setQuantity(req.getQuantity());
 		product.setCategory(thirdLevel);
 		product.setCreatedAt(LocalDateTime.now());
