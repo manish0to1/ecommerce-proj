@@ -5,10 +5,14 @@ import org.springframework.stereotype.Service;
 import com.shop.ecomm.exception.ProductException;
 import com.shop.ecomm.model.Cart;
 import com.shop.ecomm.model.User;
+import com.shop.ecomm.repository.CartRepository;
 import com.shop.ecomm.request.AddItemRequest;
 
 @Service
 public class CartServiceImpl implements CartService {
+
+	private CartRepository cartRepository;
+	private CartItemRepository cartItemRepository;
 
 	// ######### Methods ########## //
 	@Override
