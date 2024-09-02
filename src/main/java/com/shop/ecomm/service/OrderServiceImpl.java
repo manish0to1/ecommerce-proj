@@ -8,15 +8,16 @@ import com.shop.ecomm.exception.OrderException;
 import com.shop.ecomm.model.Address;
 import com.shop.ecomm.model.Order;
 import com.shop.ecomm.model.User;
+import com.shop.ecomm.repository.CartRepository;
 
 @Service
 public class OrderServiceImpl implements OrderService {
 
 	private CartRepository cartRepository;
-	private CartItemService cartItemService;
+	private CartService cartItemService;
 	private ProductService productService;
 
-	public OrderServiceImpl(CartRepository cartRepository, CartItemService cartItemService,
+	public OrderServiceImpl(CartRepository cartRepository, CartService cartItemService,
 			ProductService productService) {
 		this.cartRepository = cartRepository;
 		this.cartItemService = cartItemService;
