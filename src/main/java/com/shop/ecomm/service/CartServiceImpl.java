@@ -12,7 +12,7 @@ import com.shop.ecomm.request.AddItemRequest;
 public class CartServiceImpl implements CartService {
 
 	private CartRepository cartRepository;
-	private CartItemRepository cartItemRepository;
+	private CartItemService cartItemService;
 
 	// ######### Methods ########## //
 	@Override
