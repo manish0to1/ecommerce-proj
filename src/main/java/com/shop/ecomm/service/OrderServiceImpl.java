@@ -12,6 +12,17 @@ import com.shop.ecomm.model.User;
 @Service
 public class OrderServiceImpl implements OrderService {
 
+	private CartRepository cartRepository;
+	private CartItemService cartItemService;
+	private ProductService productService;
+
+	public OrderServiceImpl(CartRepository cartRepository, CartItemService cartItemService,
+			ProductService productService) {
+		this.cartRepository = cartRepository;
+		this.cartItemService = cartItemService;
+		this.productService = productService;
+	}
+
 	// #################### Methods ###################### //
 	@Override
 	public Order createOrder(User user, Address shippingAddress) {
