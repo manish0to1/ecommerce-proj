@@ -7,9 +7,28 @@ import com.shop.ecomm.exception.UserException;
 import com.shop.ecomm.model.Cart;
 import com.shop.ecomm.model.CartItem;
 import com.shop.ecomm.model.Product;
+import com.shop.ecomm.repository.CartItemRepository;
+import com.shop.ecomm.repository.CartRepository;
 
 @Service
 public class CartItemServiceImpl implements CartItemService {
+
+	private CartItemRepository cartItemRepository;
+
+	private UserService userService;
+
+	private CartRepository cartRepository;
+
+	public CartItemServiceImpl(CartItemRepository cartItemRepository, UserService userService,
+			CartRepository cartRepository) {
+
+		this.cartItemRepository = cartItemRepository;
+
+		this.userService = userService;
+
+		this.cartRepository = cartRepository;
+
+	}
 
 	// ############## Methods ################### //
 	@Override
