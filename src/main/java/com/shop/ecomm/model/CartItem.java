@@ -26,6 +26,8 @@ public class CartItem {
 
 	private int quantity;
 
+	private Integer price;
+
 	private Integer discountedPrice;
 
 	private Long userId;
@@ -34,14 +36,15 @@ public class CartItem {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CartItem(Long id, Cart cart, Product product, String size, int quantity, Integer discountedPrice,
-			Long userId) {
+	public CartItem(Long id, Cart cart, Product product, String size, int quantity, Integer price,
+			Integer discountedPrice, Long userId) {
 		super();
 		this.id = id;
 		this.cart = cart;
 		this.product = product;
 		this.size = size;
 		this.quantity = quantity;
+		this.price = price;
 		this.discountedPrice = discountedPrice;
 		this.userId = userId;
 	}
@@ -84,6 +87,14 @@ public class CartItem {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
 	}
 
 	public Integer getDiscountedPrice() {

@@ -33,7 +33,10 @@ public class CartItemServiceImpl implements CartItemService {
 	// ############## Methods ################### //
 	@Override
 	public CartItem createCartItem(CartItem cartItem) {
-		// TODO Auto-generated method stub
+
+		cartItem.setQuantity(1);
+		cartItem.setPrice(cartItem.getProduct().getPrice() * cartItem.getQuantity());
+
 		return null;
 	}
 
