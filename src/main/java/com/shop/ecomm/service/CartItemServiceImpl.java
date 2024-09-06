@@ -1,5 +1,7 @@
 package com.shop.ecomm.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.shop.ecomm.exception.CartItemException;
@@ -60,21 +62,37 @@ public class CartItemServiceImpl implements CartItemService {
 	}
 
 	@Override
-	public Cart isCartItemExist(Cart cart, Product product, String size, Long userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public CartItem isCartItemExist(Cart cart, Product product, String size, Long userId) {
+
+		CartItem cartItem = cartItemRepository.isCartItemExist(cart, product, size, userId);
+		return cartItem;
 	}
 
 	@Override
 	public void removeCartItem(Long userId, Long cartItemId) throws CartItemException, UserException {
-		// TODO Auto-generated method stub
+
+		CartItem cartItem = findCartItemById(cartItemId);
+		User user = userService.findUserById(cartItem.getUserId());
+		User reqUser = userService.findUserById(userId);
+
+		if (user.getId().equals(reqUser.getId())) {
+			cartRepository.deleteById(cartItemId);
+		} else {
+			throw new UserException("U can't remove another user's cart items. Mind ur own business !");
+		}
 
 	}
 
 	@Override
 	public CartItem findCartItemById(Long cartItemId) throws CartItemException {
-		// TODO Auto-generated method stub
-		return null;
+
+		Optional<CartItem> opt = cartItemRepository.findById(cartItemId);
+
+		if (opt.isPresent()) {
+			return opt.get();
+		} else {
+			throw new CartItemException("Item not found with id :" + cartItemId);
+		}
 	}
 
 }
