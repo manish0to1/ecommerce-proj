@@ -60,7 +60,7 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public String findUserCart(Long userId) {
+	public Cart findUserCart(Long userId) {
 
 		Cart cart = cartRepository.findByUserId(userId);
 
@@ -82,7 +82,7 @@ public class CartServiceImpl implements CartService {
 
 		cart.setTotalDiscountedPrice(totalDiscountedPrice);
 
-		return null;
+		return cartRepository.save(cart);
 	}
 
 }
