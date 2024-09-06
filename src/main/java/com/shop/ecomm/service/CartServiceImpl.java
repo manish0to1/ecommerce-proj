@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 
 import com.shop.ecomm.exception.ProductException;
 import com.shop.ecomm.model.Cart;
+import com.shop.ecomm.model.CartItem;
+import com.shop.ecomm.model.Product;
 import com.shop.ecomm.model.User;
 import com.shop.ecomm.repository.CartRepository;
 import com.shop.ecomm.request.AddItemRequest;
@@ -18,19 +20,43 @@ public class CartServiceImpl implements CartService {
 	public CartServiceImpl(CartRepository cartRepository, CartItemService cartItemService,
 			ProductService productService) {
 
+		this.cartRepository = cartRepository;
+		this.cartItemService = cartItemService;
+		this.productService = productService;
 	}
 
 	// ######### Methods ########## //
 	@Override
 	public Cart createCart(User user) {
-		// TODO Auto-generated method stub
-		return null;
+
+		Cart cart = new Cart();
+		cart.setUser(user);
+		return cartRepository.save(cart);
 	}
 
 	@Override
 	public String addCartItem(Long userId, AddItemRequest req) throws ProductException {
-		// TODO Auto-generated method stub
-		return null;
+
+		Cart cart = cartRepository.findByUserId(userId);
+		Product product = productService.findProductById(req.getProductId());
+		CartItem isPresent = cartItemService.isCartItemExist(cart, product, req.getSize(), userId);
+
+		if (isPresent == null) {
+			CartItem cartItem = new CartItem();
+			cartItem.setCart(cart);
+			cartItem.setProduct(product);
+			cartItem.setQuantity(req.getQuantity());
+			cartItem.setUserId(userId);
+
+			int price = req.getQuantity() * product.getDiscountedPrice();
+			cartItem.setPrice(price);
+			cartItem.setSize(req.getSize());
+
+			CartItem createCartItem = cartItemService.createCartItem(cartItem);
+			cart.getCartItems().add(createCartItem);
+
+		}
+		return "item add to cart";
 	}
 
 	@Override
