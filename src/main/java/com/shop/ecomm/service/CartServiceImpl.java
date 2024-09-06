@@ -13,6 +13,12 @@ public class CartServiceImpl implements CartService {
 
 	private CartRepository cartRepository;
 	private CartItemService cartItemService;
+	private ProductService productService;
+
+	public CartServiceImpl(CartRepository cartRepository, CartItemService cartItemService,
+			ProductService productService) {
+
+	}
 
 	// ######### Methods ########## //
 	@Override
