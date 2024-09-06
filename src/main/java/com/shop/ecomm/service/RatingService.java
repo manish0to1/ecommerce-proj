@@ -1,9 +1,12 @@
 package com.shop.ecomm.service;
 
-import org.springframework.stereotype.Service;
+import com.shop.ecomm.exception.ProductException;
+import com.shop.ecomm.model.Rating;
+import com.shop.ecomm.model.User;
+import com.shop.ecomm.request.RatingRequest;
 
-@Service
 public interface RatingService {
 
-	public Rating createRating
+	public Rating createRating(RatingRequest req, User user) throws ProductException;
+
 }
