@@ -61,7 +61,27 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public String findUserCart(Long userId) {
-		// TODO Auto-generated method stub
+
+		Cart cart = cartRepository.findByUserId(userId);
+
+		int totalPrice = 0;
+		int totalDiscountedPrice = 0;
+		int totalItem = 0;
+
+		for (CartItem cartItem : cart.getCartItems()) {
+			totalPrice = totalPrice + cartItem.getPrice();
+			totalDiscountedPrice = totalDiscountedPrice + cartItem.getDiscountedPrice();
+			totalItem = totalItem + cartItem.getQuantity();
+		}
+
+		cart.setTotalItem(totalItem);
+
+		cart.setTotalPrice(totalPrice);
+
+		cart.setDiscount(totalPrice - totalDiscountedPrice);
+
+		cart.setTotalDiscountedPrice(totalDiscountedPrice);
+
 		return null;
 	}
 
