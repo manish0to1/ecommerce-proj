@@ -23,6 +23,7 @@ public interface ProductService {
 	public Page<Product> getAllProductByCategory(String category, List<String> sizes, List<String> colors,
 			Integer minPrice, Integer maxPrice, Integer minDiscount, String sort, String stock, Integer pageNumber,
 			Integer pageSize);
+
 	// sort -> low to high
 	// stock - > inStosk or outStock
 	// pageSize , pageNumber -> pagination
