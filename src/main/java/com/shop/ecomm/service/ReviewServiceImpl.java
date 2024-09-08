@@ -1,10 +1,12 @@
 package com.shop.ecomm.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.shop.ecomm.exception.ProductException;
+import com.shop.ecomm.model.Product;
 import com.shop.ecomm.model.Review;
 import com.shop.ecomm.model.User;
 import com.shop.ecomm.repository.ProductRepository;
@@ -29,14 +31,20 @@ public class ReviewServiceImpl implements ReviewService {
 	// ############# Methods ############## //
 	@Override
 	public Review createReview(ReviewRequest req, User user) throws ProductException {
-		// TODO Auto-generated method stub
-		return null;
+
+		Product product = productService.findProductById(req.getProductId());
+		Review review = new Review();
+		review.setUser(user);
+		review.setProduct(product);
+		review.setReview(req.getReview());
+		review.setCreatedAt(LocalDateTime.now());
+		return reviewRepository.save(review);
 	}
 
 	@Override
 	public List<Review> getAllReview(Long productId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return reviewRepository.getAllProductsReview(productId);
 	}
 
 }
