@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shop.ecomm.config.JwtProvider;
 import com.shop.ecomm.exception.UserException;
+import com.shop.ecomm.model.Cart;
 import com.shop.ecomm.model.User;
 import com.shop.ecomm.repository.UserRepository;
 import com.shop.ecomm.request.LoginRequest;
 import com.shop.ecomm.response.AuthResponse;
+import com.shop.ecomm.service.CartService;
 import com.shop.ecomm.service.CustomUserServiceImpl;
 
 @RestController
@@ -30,13 +32,15 @@ public class AuthController {
 	private JwtProvider jwtProvider;
 	private PasswordEncoder passwordEncoder;
 	private CustomUserServiceImpl customUserService;
+	private CartService cartService;
 
 	public AuthController(UserRepository userRepository, CustomUserServiceImpl customUserService,
-			PasswordEncoder passwordEncoder, JwtProvider jwtProvider) {
+			PasswordEncoder passwordEncoder, JwtProvider jwtProvider, CartService cartService) {
 		this.userRepository = userRepository;
 		this.customUserService = customUserService;
 		this.passwordEncoder = passwordEncoder;
 		this.jwtProvider = jwtProvider;
+		this.cartService = cartService;
 	}
 
 	// ################### Original ##################### //
@@ -103,6 +107,7 @@ public class AuthController {
 		createdUser.setLastName(lastName);
 
 		User savedUser = userRepository.save(createdUser);
+		Cart cart = cartService.createCart(savedUser);
 
 		// Authenticate the user
 		Authentication authentication = new UsernamePasswordAuthenticationToken(savedUser.getEmail(),
