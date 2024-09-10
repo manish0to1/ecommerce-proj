@@ -3,6 +3,7 @@ package com.shop.ecomm.service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -101,20 +102,29 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Order findOrderById(Long orderId) throws OrderException {
-		// Auto-generated method stub
-		return null;
+
+		Optional<Order> opt = orderRepository.findById(orderId);
+		if (opt.isPresent()) {
+			return opt.get();
+		}
+
+		throw new OrderException("Order not exist with id :" + orderId);
 	}
 
 	@Override
 	public List<Order> userOrderHistory(Long userId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<Order> orders = userRepository.getUsersOrders(userId);
+		return orders;
 	}
 
 	@Override
 	public Order placedOrder(Long orderId) throws OrderException {
-		// TODO Auto-generated method stub
-		return null;
+
+		Order order = findOrderById(orderId);
+		order.setOrderStatus(OrderStatus.PLACED);
+		order.getPaymentDetails().setStatus(PaymentStatus.COMPLETED);
+		return order;
 	}
 
 	@Override
@@ -143,14 +153,13 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public List<Order> getAllOrder() {
-		// TODO Auto-generated method stub
-		return null;
+		return orderRepository.findAll();
 	}
 
 	@Override
 	public void deleteOrder(Long orderId) throws OrderException {
-		// TODO Auto-generated method stub
-
+		Order order = findOrderById(orderId);
+		orderRepository.deleteById(orderId);
 	}
 
 }
