@@ -129,26 +129,34 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Order shippingOrder(Long orderId) throws OrderException {
-		// TODO Auto-generated method stub
-		return null;
+
+		Order order = findOrderById(orderId);
+		order.setOrderStatus(OrderStatus.SHIPPED);
+
+		return orderRepository.save(order);
 	}
 
 	@Override
 	public Order confirmedOrder(Long orderId) throws OrderException {
-		// TODO Auto-generated method stub
-		return null;
+
+		Order order = findOrderById(orderId);
+		order.setOrderStatus(OrderStatus.CONFIRMED);
+
+		return orderRepository.save(order);
 	}
 
 	@Override
 	public Order deliveredOrder(Long orderId) throws OrderException {
-		// TODO Auto-generated method stub
-		return null;
+		Order order = findOrderById(orderId);
+		order.setOrderStatus(OrderStatus.DELIVERED);
+		return orderRepository.save(order);
 	}
 
 	@Override
 	public Order calceledOrder(Long orderId) throws OrderException {
-		// TODO Auto-generated method stub
-		return null;
+		Order order = findOrderById(orderId);
+		order.setOrderStatus(OrderStatus.CANCELLED);
+		return orderRepository.save(order);
 	}
 
 	@Override
@@ -161,5 +169,5 @@ public class OrderServiceImpl implements OrderService {
 		Order order = findOrderById(orderId);
 		orderRepository.deleteById(orderId);
 	}
-
+432			
 }
