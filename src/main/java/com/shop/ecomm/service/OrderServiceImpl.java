@@ -14,6 +14,8 @@ import com.shop.ecomm.model.CartItem;
 import com.shop.ecomm.model.Order;
 import com.shop.ecomm.model.OrderItem;
 import com.shop.ecomm.model.User;
+import com.shop.ecomm.repository.AddressRepository;
+import com.shop.ecomm.repository.OrderRepository;
 import com.shop.ecomm.repository.UserRepository;
 
 @Service
@@ -47,7 +49,6 @@ public class OrderServiceImpl implements OrderService {
 		this.userRepository = userRepository;
 		this.orderItemService = orderItemService;
 		this.orderItemRepository = orderItemRepository;
-
 	}
 
 	// #################### Methods ###################### //
@@ -169,5 +170,4 @@ public class OrderServiceImpl implements OrderService {
 		Order order = findOrderById(orderId);
 		orderRepository.deleteById(orderId);
 	}
-432			
 }
