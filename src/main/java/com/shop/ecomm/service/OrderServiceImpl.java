@@ -15,22 +15,12 @@ import com.shop.ecomm.model.Order;
 import com.shop.ecomm.model.OrderItem;
 import com.shop.ecomm.model.User;
 import com.shop.ecomm.repository.AddressRepository;
+import com.shop.ecomm.repository.OrderItemRepository;
 import com.shop.ecomm.repository.OrderRepository;
 import com.shop.ecomm.repository.UserRepository;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-
-//	private CartRepository cartRepository;
-//	private CartService cartItemService;
-//	private ProductService productService;
-//
-//	public OrderServiceImpl(CartRepository cartRepository, CartService cartItemService,
-//			ProductService productService) {
-//		this.cartRepository = cartRepository;
-//		this.cartItemService = cartItemService;
-//		this.productService = productService;
-//	}
 
 	private OrderRepository orderRepository;
 	private CartService cartService;
