@@ -13,6 +13,8 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Address {
 
+	public static Address address;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

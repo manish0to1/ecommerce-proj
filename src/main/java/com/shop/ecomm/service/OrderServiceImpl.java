@@ -42,11 +42,12 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	// #################### Methods ###################### //
+
 	@Override
 	public Order createOrder(User user, Address shippingAddress) {
 
 		shippingAddress.setUser(user);
-		Address.address = addressRepository.save(shippAddress);
+		Address.address = addressRepository.save(shippingAddress);
 		user.getAddresses().add(address);
 		userRepository.save(user);
 
@@ -78,8 +79,8 @@ public class OrderServiceImpl implements OrderService {
 
 		createdOrder.setShippingAddress(address);
 		createdOrder.setOrderDate(LocalDateTime.now());
-		createdOrder.setOrderStatus(OrderStatus.PENDING);
-		createdOrder.setPaymentDetails().setStatus(PaymentStatus.PENDING);
+		createdOrder.setOrderStatus("PENDING");
+		createdOrder.setPaymentDetails().setStatus("PENDING");
 		createdOrder.setCreateAt(LocalDateTime.now());
 
 		Order savedOrder = orderItemRepository.save(createdOrder);
@@ -113,8 +114,8 @@ public class OrderServiceImpl implements OrderService {
 	public Order placedOrder(Long orderId) throws OrderException {
 
 		Order order = findOrderById(orderId);
-		order.setOrderStatus(OrderStatus.PLACED);
-		order.getPaymentDetails().setStatus(PaymentStatus.COMPLETED);
+		order.setOrderStatus("PLACED");
+		order.getPaymentDetails().setStatus("COMPLETED");
 		return order;
 	}
 
@@ -122,7 +123,7 @@ public class OrderServiceImpl implements OrderService {
 	public Order shippingOrder(Long orderId) throws OrderException {
 
 		Order order = findOrderById(orderId);
-		order.setOrderStatus(OrderStatus.SHIPPED);
+		order.setOrderStatus("SHIPPED");
 
 		return orderRepository.save(order);
 	}
@@ -131,7 +132,7 @@ public class OrderServiceImpl implements OrderService {
 	public Order confirmedOrder(Long orderId) throws OrderException {
 
 		Order order = findOrderById(orderId);
-		order.setOrderStatus(OrderStatus.CONFIRMED);
+		order.setOrderStatus("CONFIRMED");
 
 		return orderRepository.save(order);
 	}
@@ -139,14 +140,14 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Order deliveredOrder(Long orderId) throws OrderException {
 		Order order = findOrderById(orderId);
-		order.setOrderStatus(OrderStatus.DELIVERED);
+		order.setOrderStatus("DELIVERED");
 		return orderRepository.save(order);
 	}
 
 	@Override
 	public Order calceledOrder(Long orderId) throws OrderException {
 		Order order = findOrderById(orderId);
-		order.setOrderStatus(OrderStatus.CANCELLED);
+		order.setOrderStatus("CANCELLED");
 		return orderRepository.save(order);
 	}
 
