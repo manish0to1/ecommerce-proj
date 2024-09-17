@@ -28,7 +28,7 @@ public class Category {
 	private int level;
 
 	public Category() {
-		// TODO Auto-generated constructor stub
+		// default constructor stub
 	}
 
 	public Category(Long id, @NotNull @Size(max = 50) String name, Category parentCategory, int level) {
