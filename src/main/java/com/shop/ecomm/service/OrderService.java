@@ -9,12 +9,14 @@ import com.shop.ecomm.model.User;
 
 public interface OrderService {
 
+	// CRUD Operations
 	public Order createOrder(User user, Address shippingAddress);
 
 	public Order findOrderById(Long orderId) throws OrderException;
 
-	public List<Order> userOrderHistory(Long userId);
+	public void deleteOrder(Long orderId) throws OrderException;
 
+	// Status Update Methods
 	public Order placedOrder(Long orderId) throws OrderException;
 
 	public Order shippingOrder(Long orderId) throws OrderException;
@@ -25,8 +27,8 @@ public interface OrderService {
 
 	public Order calceledOrder(Long orderId) throws OrderException;
 
+	// Retrieval Methods
+	public List<Order> userOrderHistory(Long userId);
+
 	public List<Order> getAllOrder();
-
-	public void deleteOrder(Long orderId) throws OrderException;
-
 }
