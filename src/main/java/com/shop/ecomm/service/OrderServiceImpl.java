@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService {
 	private CartService cartService;
 	private AddressRepository addressRepository;
 	private UserRepository userRepository;
-	private OrderItemService orderItemService;
+	private OrderItemService orderItemService; 
 	private OrderItemRepository orderItemRepository;
 
 	public OrderServiceImpl(OrderRepository orderRepository, CartService cartService,
