@@ -16,7 +16,7 @@ import com.shop.ecomm.model.OrderItem;
 import com.shop.ecomm.model.User;
 import com.shop.ecomm.repository.AddressRepository;
 import com.shop.ecomm.repository.OrderItemRepository;
-import com.shop.ecomm.repository.OrderRepository;
+import com.shop.ecomm.repository.OrderRepository;  
 import com.shop.ecomm.repository.UserRepository;
    
 @Service
