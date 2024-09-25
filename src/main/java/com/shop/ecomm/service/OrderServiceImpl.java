@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-  
+
 import org.springframework.stereotype.Service;
-  
+
 import com.shop.ecomm.exception.OrderException;
 import com.shop.ecomm.model.Address;
 import com.shop.ecomm.model.Cart;
@@ -16,17 +16,17 @@ import com.shop.ecomm.model.OrderItem;
 import com.shop.ecomm.model.User;
 import com.shop.ecomm.repository.AddressRepository;
 import com.shop.ecomm.repository.OrderItemRepository;
-import com.shop.ecomm.repository.OrderRepository;  
+import com.shop.ecomm.repository.OrderRepository;
 import com.shop.ecomm.repository.UserRepository;
-   
+
 @Service
 public class OrderServiceImpl implements OrderService {
- 
+
 	private OrderRepository orderRepository;
-	private CartService cartService;  
+	private CartService cartService;
 	private AddressRepository addressRepository;
 	private UserRepository userRepository;
-	private OrderItemService orderItemService; 
+	private OrderItemService orderItemService;
 	private OrderItemRepository orderItemRepository;
 
 	public OrderServiceImpl(OrderRepository orderRepository, CartService cartService,
@@ -42,10 +42,10 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	// #################### Methods ###################### //
-   
+
 	@Override
 	public Order createOrder(User user, Address shippingAddress) {
- 
+
 		shippingAddress.setUser(user);
 		Address.address = addressRepository.save(shippingAddress);
 		user.getAddresses().add(address);
