@@ -96,6 +96,7 @@ public class OrderServiceImpl implements OrderService {
 	public Order findOrderById(Long orderId) throws OrderException {
 
 		Optional<Order> opt = orderRepository.findById(orderId);
+
 		if (opt.isPresent()) {
 			return opt.get();
 		}
