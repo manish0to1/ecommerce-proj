@@ -80,7 +80,7 @@ public class OrderServiceImpl implements OrderService {
 		createdOrder.setShippingAddress(address);
 		createdOrder.setOrderDate(LocalDateTime.now());
 		createdOrder.setOrderStatus("PENDING");
-		createdOrder.setPaymentDetails().setStatus("PENDING");
+		createdOrder.getPaymentDetails().setStatus("PENDING");
 		createdOrder.setCreateAt(LocalDateTime.now());
 
 		Order savedOrder = orderItemRepository.save(createdOrder);
