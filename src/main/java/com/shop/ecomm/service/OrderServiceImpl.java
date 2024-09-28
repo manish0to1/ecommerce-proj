@@ -18,7 +18,7 @@ import com.shop.ecomm.repository.AddressRepository;
 import com.shop.ecomm.repository.OrderItemRepository;
 import com.shop.ecomm.repository.OrderRepository;
 import com.shop.ecomm.repository.UserRepository;
-    
+
 @Service
 public class OrderServiceImpl implements OrderService {
 
@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
 	private UserRepository userRepository;
 	private OrderItemService orderItemService;
 	private OrderItemRepository orderItemRepository;
-      
+
 	public OrderServiceImpl(OrderRepository orderRepository, CartService cartService,
 			AddressRepository addressRepository, UserRepository userRepository, OrderItemService orderItemService,
 			OrderItemRepository orderItemRepository) {
