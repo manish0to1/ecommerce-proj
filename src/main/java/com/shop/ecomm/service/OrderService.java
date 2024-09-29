@@ -19,7 +19,7 @@ public interface OrderService {
 	// Status Update Methods
 	public Order placedOrder(Long orderId) throws OrderException;
 
-	public Order shippingOrder(Long orderId) throws OrderException;
+	public Order shippedOrder(Long orderId) throws OrderException;
 
 	public Order confirmedOrder(Long orderId) throws OrderException;
 
@@ -30,5 +30,9 @@ public interface OrderService {
 	// Retrieval Methods
 	public List<Order> userOrderHistory(Long userId);
 
-	public List<Order> getAllOrder();
+	public List<Order> getAllOrders();
+
+//	public Order (Long orderId);
+
+//	public List<Order> getAllOrder();
 }
