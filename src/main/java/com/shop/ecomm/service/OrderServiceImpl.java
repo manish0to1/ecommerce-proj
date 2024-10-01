@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
- 
+
 import com.shop.ecomm.exception.OrderException;
 import com.shop.ecomm.model.Address;
 import com.shop.ecomm.model.Cart;
@@ -22,7 +22,7 @@ import com.shop.ecomm.repository.UserRepository;
 @Service
 public class OrderServiceImpl implements OrderService {
 
-	private OrderRepository orderRepository; 
+	private OrderRepository orderRepository;
 	private CartService cartService;
 	private AddressRepository addressRepository;
 	private UserRepository userRepository;
