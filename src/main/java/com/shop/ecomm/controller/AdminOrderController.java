@@ -65,4 +65,8 @@ public class AdminOrderController {
 		return new ResponseEntity<>(order, HttpStatus.OK);
 	}
 
-}
+	public ResponseEntity<ApiResponse>DeleteOrderHandler(@PathVariable Long orderId,
+			@RequestHeader("Authentication")String jwt)throws OrderException{
+		
+		return null;
+	}
