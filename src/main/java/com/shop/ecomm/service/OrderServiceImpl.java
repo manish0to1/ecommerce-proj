@@ -48,7 +48,7 @@ public class OrderServiceImpl implements OrderService {
 
 		shippingAddress.setUser(user);
 		Address.address = addressRepository.save(shippingAddress);
-		user.getAddresses().add(address);
+		user.getAddresses().add(shippingAddress);
 		userRepository.save(user);
 
 		Cart cart = cartService.findUserCart(user.getId());
@@ -77,7 +77,7 @@ public class OrderServiceImpl implements OrderService {
 		createdOrder.setDiscount(cart.getDiscount());
 		createdOrder.setTotalItem(cart.getTotalItem());
 
-		createdOrder.setShippingAddress(address);
+		createdOrder.setShippingAddress(shippingAddress);
 		createdOrder.setOrderDate(LocalDateTime.now());
 		createdOrder.setOrderStatus("PENDING");
 		createdOrder.getPaymentDetails().setStatus("PENDING");
@@ -120,7 +120,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Order shippingOrder(Long orderId) throws OrderException {
+	public Order shippedOrder(Long orderId) throws OrderException {
 
 		Order order = findOrderById(orderId);
 		order.setOrderStatus("SHIPPED");
@@ -161,4 +161,5 @@ public class OrderServiceImpl implements OrderService {
 		Order order = findOrderById(orderId);
 		orderRepository.deleteById(orderId);
 	}
+
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -65,8 +66,16 @@ public class AdminOrderController {
 		return new ResponseEntity<>(order, HttpStatus.OK);
 	}
 
-	public ResponseEntity<ApiResponse>DeleteOrderHandler(@PathVariable Long orderId,
-			@RequestHeader("Authentication")String jwt)throws OrderException{
-		
-		return null;
+	@DeleteMapping("/{orderId}/delete")
+	public ResponseEntity<ApiResponse> DeleteOrderHandler(@PathVariable Long orderId,
+			@RequestHeader("Authorization") String jwt) throws OrderException {
+
+		orderService.deleteOrder(orderId);
+		ApiResponse res = new ApiResponse();
+		res.setMessage("order deleted duccessfully");
+		res.setStatus(true);
+
+		return new ResponseEntity<>(res, HttpStatus.OK);
 	}
+
+}
