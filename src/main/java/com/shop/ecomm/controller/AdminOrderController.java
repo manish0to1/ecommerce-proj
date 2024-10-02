@@ -40,7 +40,7 @@ public class AdminOrderController {
 		return new ResponseEntity<>(order, HttpStatus.OK);
 	}
 
-	@PutMapping("/{orderId}/ship")
+	@PutMapping("/{orderId}/shipp")
 	public ResponseEntity<Order> ShippedOrderHandler(@PathVariable Long orderId,
 			@RequestHeader("Authorization") String jwt) throws OrderException {
 
