@@ -18,7 +18,7 @@ import com.shop.ecomm.repository.AddressRepository;
 import com.shop.ecomm.repository.OrderItemRepository;
 import com.shop.ecomm.repository.OrderRepository;
 import com.shop.ecomm.repository.UserRepository;
-
+  
 @Service
 public class OrderServiceImpl implements OrderService {
 
@@ -40,9 +40,9 @@ public class OrderServiceImpl implements OrderService {
 		this.orderItemService = orderItemService;
 		this.orderItemRepository = orderItemRepository;
 	}
-
+     
 	// #################### Methods ###################### //
-
+ 
 	@Override
 	public Order createOrder(User user, Address shippingAddress) {
 
