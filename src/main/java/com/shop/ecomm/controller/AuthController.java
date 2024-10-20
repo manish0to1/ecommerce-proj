@@ -85,6 +85,8 @@ public class AuthController {
 	// }
 
 	// #################### Debug this ################ //
+	// register method
+
 	@PostMapping("/signup")
 	public ResponseEntity<AuthResponse> createUserHandler(@RequestBody User user) throws UserException {
 
